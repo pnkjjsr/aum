@@ -15,6 +15,10 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+
+  typography: {
+    fontFamily: '"Lato", "Helvetica", "Arial", sans-serif',
+  },
 });
 
 export default theme;

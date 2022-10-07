@@ -3,7 +3,7 @@
   height: 46px;
   border: 0 none;
   border-radius: $borderRadius;
-  color: $white;
+  color: $light;
   font-size: $fontSize;
   font-family: $fontFamily;
   font-weight: $fontWeight;
@@ -16,7 +16,7 @@
   background-color: $primaryColor;
 
   &.outline {
-    background-color: $white;
+    background-color: $light;
     border: 1px solid $primaryColor;
     color: $primaryColor;
   }
@@ -27,17 +27,17 @@
   background-color: $secondaryColor;
 
   &.outline {
-    background-color: $white;
+    background-color: $light;
     border: 1px solid $secondaryColor;
     color: $secondaryColor;
   }
 }
 
 @mixin boxShadow() {
-  background: $white;
+  background: $light;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
 }
 @mixin boxShadowLight() {
-  background: $white;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.10);
+  background: $light;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }

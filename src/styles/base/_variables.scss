@@ -1,9 +1,10 @@
 $fontFamily: "Lato";
 
-$fontSizeSmall: 13px;
 $fontSize: 16px;
-$fontSizeLarge: 18px;
-$fontSizeH1: 36px;
+$fontSizeSmall: $fontSize / 1.2;
+$fontSizeLarge: $fontSize * 1.1;
+
+$fontSizeH1: $fontSize * 2.6;
 $fontSizeH2: 28px;
 $fontSizeH3: 26px;
 $fontSizeH4: 24px;
@@ -16,7 +17,7 @@ $fontWeight: 400;
 $fontWeightBold: 700;
 $fontWeightBlack: 900;
 
-$primaryColor: #66c1de;
+$primaryColor: hsla(237, 90.9%, 8.6%, 1);
 $primaryColorLight: lighten($primaryColor, 30%);
 $primaryColorDark: darken($primaryColor, 30%);
 
@@ -29,15 +30,15 @@ $textColor: #0c2e39;
 $textColorLight: #5e737a;
 $textColorLighter: lighten($textColorLight, 30%);
 
-$white: #fff;
-$black: #000;
+$light: #fff;
+$dark: #000;
 $green: #00b94d;
-$gray: darken($white, 50%);
-$grayLight: lighten($black, 90%);
-$grayLighter: lighten($black, 95%);
-$grayLightest: lighten($black, 98%);
+$gray: darken($light, 50%);
+$grayLight: lighten($dark, 90%);
+$grayLighter: lighten($dark, 95%);
+$grayLightest: lighten($dark, 98%);
 
-$bgBody: $white;
+$bgBody: $light;
 
 $indexHeader: 3;
 $indexMain: 2;
@@ -46,9 +47,8 @@ $indexFooter: 1;
 $gutter: 8px;
 $borderRadius: $gutter * 2;
 
-$heightHeader: 70px;
-$heightFooter: 420px;
-$heightFooterSeller: 110px;
+$heightHeader: 53px;
+$heightFooter: 40px;
 
 $widthMax: 340px;
 $widthMin: 323px;

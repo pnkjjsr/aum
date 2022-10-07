@@ -1,0 +1,25 @@
+.promo {
+  padding: ($gutter * 12) ($gutter * 3) ($gutter * 6);
+  @include media-breakpoint-up(md) {
+    padding: $gutter ($gutter * 3);
+  }
+  background-color: $primaryColor;
+  color: $light;
+
+  h1 {
+    margin-bottom: $gutter * 7;
+  }
+
+  p {
+    margin-bottom: $gutter * 5;
+    color: $textColorLighter;
+    font-size: $fontSizeLarge;
+  }
+
+  .action {
+    margin-bottom: $gutter * 5;
+    button {
+      text-transform: capitalize;
+    }
+  }
+}
