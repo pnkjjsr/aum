@@ -1,0 +1,71 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/configs/*": [
+        "configs/*"
+      ],
+      "@/context/*": [
+        "contexts/*"
+      ],
+      "@/layouts/*": [
+        "layouts/*"
+      ],
+      "@/libs/*": [
+        "libs/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/sections/*": [
+        "sections/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ],
+    },
+  },
+  "include": [
+    "next-env.d.js",
+    "**/*.js",
+    "**/*.jsx",
+    "pages/index.jsx",
+    "pages/_document.jsx",
+    "pages/_app.jsx",
+    "layouts/open/index.jsx",
+    "layouts/open/Footer.jsx",
+    "layouts/open/Header.jsx",
+    "pages/api/subscribers/index.js",
+    "libs/firebase/index.js",
+    "pages/subscribe/index.jsx",
+    "pages/comingsoon/index.jsx",
+    "pages/api/hello.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

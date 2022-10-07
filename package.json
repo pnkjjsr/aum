@@ -14,7 +14,18 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@emotion/cache": "latest",
+    "@emotion/react": "latest",
+    "@emotion/server": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
     "eslint": "8.24.0",
-    "eslint-config-next": "12.3.1"
+    "eslint-config-next": "12.3.1",
+    "firebase": "^9.9.3",
+    "next-sitemap": "^3.1.21",
+    "prop-types": "^15.8.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.54.6"
   }
 }
