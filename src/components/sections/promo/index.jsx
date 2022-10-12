@@ -8,7 +8,7 @@ import s from "./style.module.scss";
 
 function Promo() {
   return (
-    <div className={s.promo}>
+    <section className={s.promo}>
       <Container maxWidth="lg">
         <Grid
           container
@@ -41,7 +41,7 @@ function Promo() {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </section>
   );
 }
 

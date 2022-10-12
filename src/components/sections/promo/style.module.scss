@@ -1,4 +1,5 @@
 .promo {
+  margin-bottom: $gutter * 10;
   padding: ($gutter * 12) ($gutter * 3) ($gutter * 6);
   @include media-breakpoint-up(md) {
     padding: $gutter ($gutter * 3);
