@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -7,6 +8,13 @@ import Button from "@mui/material/Button";
 import s from "./style.module.scss";
 
 function Promo() {
+  const router = useRouter();
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    router.push("/signup");
+  };
+
   return (
     <section className={s.promo}>
       <Container maxWidth="lg">
@@ -25,7 +33,7 @@ function Promo() {
             </p>
 
             <div className={s.action}>
-              <Button variant="contained" size="large">
+              <Button variant="contained" size="large" onClick={handleSignup}>
                 Sign Up Now
               </Button>
             </div>

@@ -1,0 +1,20 @@
+.signup {
+  margin-top: $gutter * 6;
+
+  .content {
+    position: relative;
+    @include media-breakpoint-up(md) {
+      min-height: 400px;
+    }
+    padding: $gutter * 10 $gutter * 5;
+    border-radius: $borderRadius;
+    @include boxShadow();
+
+    .header {
+      margin-bottom: $gutter * 4;
+      h1 {
+        font-size: $fontSizeH2;
+      }
+    }
+  }
+}

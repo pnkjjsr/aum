@@ -1,0 +1,19 @@
+.form {
+  .action {
+    margin-top: $gutter;
+
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      z-index: 1;
+      left: $gutter * 5;
+      bottom: $gutter * 10;
+      width: calc(100% - ($gutter * 10));
+    }
+
+    button {
+      height: $gutter * 7;
+      font-weight: $fontWeightBold;
+      text-transform: capitalize;
+    }
+  }
+}

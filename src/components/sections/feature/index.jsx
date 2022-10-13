@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -9,6 +10,13 @@ import CheckIcon from "@mui/icons-material/Check";
 import s from "./style.module.scss";
 
 function Feature() {
+  const router = useRouter();
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    router.push("/signup");
+  };
+
   return (
     <section className={s.feature}>
       <Container>
@@ -51,7 +59,7 @@ function Feature() {
               </ul>
 
               <div className={s.action}>
-                <Button variant="contained" size="large">
+                <Button variant="contained" size="large" onClick={handleSignup}>
                   Sign Up Now <ArrowForwardIcon fontSize="small" />
                 </Button>
 

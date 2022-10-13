@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -24,16 +25,30 @@ import s from "./style.module.scss";
 // }));
 
 function Header() {
+  const router = useRouter();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    router.push("/login");
+  };
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    router.push("/signup");
+  };
+
   return (
     <header className={s.header}>
       <Container className={s.container} maxWidth="lg">
         <div className={s.logo}>
-          <Image src="/images/logo.svg" width="89" height="39" />
+          <Image src="/images/logo.svg" width="89" height="39" alt="AUM Logo" />
         </div>
 
         <div className={s.action}>
-          <Button variant="outlined">Log In</Button>
-          <Button variant="contained">
+          <Button variant="outlined" onClick={handleLogin}>
+            Log In
+          </Button>
+          <Button variant="contained" onClick={handleSignup}>
             Sign Up <ArrowForwardIcon fontSize="small" />
           </Button>
         </div>
