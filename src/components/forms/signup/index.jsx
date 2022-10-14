@@ -13,7 +13,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-function Signup() {
+function Signup(props) {
   const mobileRef = useRef();
   const [form, setForm] = useState({
     mobile: "",
@@ -120,7 +120,7 @@ function Signup() {
 
         <div className={s.action}>
           <Button type="submit" fullWidth variant="contained" size="large">
-            Send OTP
+            {props.btnText}
           </Button>
         </div>
       </form>

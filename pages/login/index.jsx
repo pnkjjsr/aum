@@ -17,10 +17,10 @@ export default function Signup() {
               <Grid item md={6}>
                 <div className={s.content}>
                   <div className={s.header}>
-                    <h1>What’s your mobile number?</h1>
+                    <h1>Login to Dashboard</h1>
                   </div>
 
-                  <SignupForm btnText="Send OTP" />
+                  <SignupForm btnText="Next" />
                 </div>
               </Grid>
             </Grid>
