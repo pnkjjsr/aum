@@ -25,11 +25,12 @@ function Promo() {
           alignItems="center"
         >
           <Grid item md={5}>
-            <h1>Power your finance, grow your business</h1>
+            <h1>An all-inclusive GST filing solution.</h1>
 
             <p>
-              Accept payments from customers. Automate payouts to vendors &amp;
-              employees. Never run out of working capital.
+              We are a technological platform with the sole purpose to
+              streamline financial processes and help millions of Indian MSMEs
+              reduce time and money seamlessly.
             </p>
 
             <div className={s.action}>
@@ -41,7 +42,7 @@ function Promo() {
 
           <Grid item md={7}>
             <Image
-              src="/images/promo.jpg"
+              src="/images/promo.png"
               width="644"
               height="670"
               alt="Power your finance, grow your business"

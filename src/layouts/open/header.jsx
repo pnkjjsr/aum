@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
@@ -41,7 +42,16 @@ function Header() {
     <header className={s.header}>
       <Container className={s.container} maxWidth="lg">
         <div className={s.logo}>
-          <Image src="/images/logo.svg" width="89" height="39" alt="AUM Logo" />
+          <Link href="/">
+            <a>
+              <Image
+                src="/images/logo.svg"
+                width="89"
+                height="39"
+                alt="AUM Logo"
+              />
+            </a>
+          </Link>
         </div>
 
         <div className={s.action}>

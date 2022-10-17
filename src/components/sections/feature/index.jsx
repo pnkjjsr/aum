@@ -33,28 +33,20 @@ function Feature() {
 
               <ul>
                 <li>
-                  <CheckIcon color="primary" fontSize="small" /> 100+ Payment
-                  Methods
+                  <CheckIcon color="primary" fontSize="small" /> #1 GST platform
+                  for MSMEs
                 </li>
                 <li>
-                  <CheckIcon color="primary" fontSize="small" /> Industry
-                  Leading Success Rate
+                  <CheckIcon color="primary" fontSize="small" /> Saved 1.8M+
+                  man-hours
                 </li>
                 <li>
-                  <CheckIcon color="primary" fontSize="small" /> Superior
-                  Checkout Experience
+                  <CheckIcon color="primary" fontSize="small" /> Annual tax
+                  savings of ₹1 Cr plus
                 </li>
                 <li>
-                  <CheckIcon color="primary" fontSize="small" /> Easy to
-                  Integrate
-                </li>
-                <li>
-                  <CheckIcon color="primary" fontSize="small" /> Instant
-                  Settlements from day 1
-                </li>
-                <li>
-                  <CheckIcon color="primary" fontSize="small" /> In-depth
-                  Reporting and Insights
+                  <CheckIcon color="primary" fontSize="small" /> Tax reductions
+                  for MSMEs of 2–7%
                 </li>
               </ul>
 
