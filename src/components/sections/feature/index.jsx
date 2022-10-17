@@ -21,14 +21,14 @@ function Feature() {
     <section className={s.feature}>
       <Container>
         <div className={s.header}>
-          <h2>Accept Payments with Razorpay Payment Suite</h2>
+          <h2>A faster way to save money & time.</h2>
         </div>
 
         <div className={s.content}>
           <Grid container spacing={1}>
             <Grid item md={6}>
               <h3 className={s.heading}>
-                Supercharge your business with the all‑powerful Payment Gateway
+                Save money. Save time. Boost your business.
               </h3>
 
               <ul>
