@@ -1,0 +1,62 @@
+.header {
+  position: fixed;
+  z-index: $indexHeader;
+  top: 0;
+  left: 0;
+  width: 100%;
+  @include boxShadow();
+
+  @include media-breakpoint-up(md) {
+    position: relative;
+    box-shadow: none;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .info {
+      display: flex;
+
+      .logo {
+        margin-top: $gutter;
+      }
+    }
+
+    .action {
+      button {
+        // margin: $gutter 0 0 $gutter;
+        text-transform: capitalize;
+
+        svg {
+          // margin-left: $gutter;
+        }
+      }
+    }
+  }
+}
+
+.main {
+  position: relative;
+  z-index: $indexMain;
+  margin-top: $heightHeader + $gutter;
+  @include media-breakpoint-up(md) {
+    margin-top: $gutter;
+  }
+  margin-bottom: $heightFooter + $gutter;
+  background-color: $bgBody;
+}
+
+.footer {
+  position: fixed;
+  z-index: $indexFooter;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: $light;
+  text-align: center;
+
+  .container {
+    padding: $gutter;
+  }
+}
