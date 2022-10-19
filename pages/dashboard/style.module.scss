@@ -13,6 +13,7 @@
   .upload {
     display: flex;
     flex-direction: column;
+    max-width: 400px;
     padding: $gutter * 2;
     border: 1px solid $grayLighter;
     border-radius: $borderRadius;

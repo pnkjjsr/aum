@@ -1,4 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [AUM](https://aum.com/) project bootstrapped with [`next.js`, `create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Features
+- SSR react development - Nextjs
+- SASS/SCSS configuration
+- Material-UI (react)
+- Absolute alias path with, babel-nextjs
+- 100% Audit Score (85% Performance)
+- Theme Managment (Future Feasability)
+- Firebase authentication, firestore (Future Feasability)
+- Progressive Web App (Future Feasability)
+- Service worker, Firebase cloud message notification (Future Feasability)
+- Google Tag Manager and Google Analytics (Future Feasability)
+
+### First Build Score
+![image](https://user-images.githubusercontent.com/2494586/196608483-6c734a63-c42a-476a-bb2f-9d4af268e5e1.png)
+
+
+### First Lighthouse Score
+**Mobile**
+![image](https://user-images.githubusercontent.com/2494586/196608711-1524614f-62f8-426e-bc31-2884aa8260e8.png)
+
+**Web**
+![image](https://user-images.githubusercontent.com/2494586/196608786-4c71f2c4-aeac-40f9-b188-7e857bbffaa3.png)
 
 ## Getting Started
 
