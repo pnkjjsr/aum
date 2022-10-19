@@ -33,9 +33,9 @@ function Header() {
     <header className={s.header}>
       <div className={s.container}>
         <aside className={s.info}>
-          <IconButton size="large" aria-label="Dashboard" onClick={handleMenu}>
+          {/* <IconButton size="large" aria-label="Dashboard" onClick={handleMenu}>
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
 
           <div className={s.logo}>
             <Link href="/">
