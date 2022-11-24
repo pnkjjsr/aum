@@ -10,6 +10,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import MenuIcon from "@mui/icons-material/Menu";
 
+import { authCookie } from "@/utils/helper/method";
+
 import s from "./style.module.scss";
 
 function Header() {
@@ -17,7 +19,8 @@ function Header() {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    router.push("/login");
+    authCookie(false);
+    router.push("/");
   };
 
   const handleDashboard = (e) => {

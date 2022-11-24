@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
@@ -6,6 +7,7 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
 import validation from "./validation";
+import { authCookie } from "@/utils/helper/method";
 
 import s from "./style.module.scss";
 
@@ -14,6 +16,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 function Signup(props) {
+  const router = useRouter();
   const mobileRef = useRef();
   const [form, setForm] = useState({
     mobile: "",
@@ -59,6 +62,21 @@ function Signup(props) {
     setForm({ ...form, [name]: val, [err]: false, [errText]: "" });
   };
 
+  const postLogin = async () => {
+    const data = {
+      name: "Pankaj Jasoria",
+      mobile: form.mobile,
+      password: "1234",
+    };
+
+    const response = await fetch("/api/signup", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+
+    return response.json();
+  };
+
   const handleSubscribe = async (e) => {
     e.preventDefault();
     let el = mobileRef.current;
@@ -73,12 +91,23 @@ function Signup(props) {
         text: form.mobileErrText || "Please enter mobile number",
       });
     } else {
-      setSnack({
-        ...snack,
-        open: true,
-        severity: "success",
-        text: "Successfully Submitted",
-      });
+      postLogin()
+        .then((res) => {
+          if (res.code == "login/success") {
+            setSnack({
+              ...snack,
+              open: true,
+              severity: "success",
+              text: "Successfully Submitted",
+            });
+
+            authCookie(true);
+            router.push("/dashboard");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
       el.value = "";
     }

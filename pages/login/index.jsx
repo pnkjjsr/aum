@@ -1,4 +1,5 @@
 import React from "react";
+import nookies from "nookies";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
@@ -29,4 +30,22 @@ export default function Signup() {
       </Layout>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  let auth = cookies.auth;
+
+  if (auth) {
+    return {
+      redirect: {
+        destination: "dashboard",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {}, // will be passed to the page component as props
+  };
 }

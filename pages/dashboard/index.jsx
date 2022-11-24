@@ -1,4 +1,5 @@
 import React from "react";
+import nookies from "nookies";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -27,6 +28,24 @@ function Dashboard() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  let auth = cookies.auth;
+
+  if (!auth) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {}, // will be passed to the page component as props
+  };
 }
 
 export default Dashboard;
