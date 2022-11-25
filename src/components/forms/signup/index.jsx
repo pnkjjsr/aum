@@ -63,9 +63,10 @@ function Signup(props) {
   };
 
   const postLogin = async () => {
+    // @pankaj, 24 nov | Update: name and password not required.
     const data = {
       name: "Pankaj Jasoria",
-      mobile: form.mobile,
+      mobile: parseInt(form.mobile),
       password: "1234",
     };
 

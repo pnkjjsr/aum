@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     max-width: 400px;
+    margin-bottom: $gutter * 3;
     padding: $gutter * 2;
     border: 1px solid $grayLighter;
     border-radius: $borderRadius;
@@ -25,6 +26,12 @@
     }
 
     label {
+      text-transform: capitalize;
+    }
+  }
+
+  .action {
+    button {
       text-transform: capitalize;
     }
   }
