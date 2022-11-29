@@ -21,7 +21,7 @@ export default function Signup() {
                     <h1>What’s your mobile number?</h1>
                   </div>
 
-                  <SignupForm btnText="Send OTP" />
+                  <SignupForm btnText="Sign Up" />
                 </div>
               </Grid>
             </Grid>

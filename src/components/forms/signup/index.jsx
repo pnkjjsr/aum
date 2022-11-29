@@ -1,14 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
-import validation from "./validation";
+import { auth } from "@/libs/firebase";
 import { authCookie } from "@/utils/helper/method";
 
+import validation from "./validation";
 import s from "./style.module.scss";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -18,10 +20,14 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 function Signup(props) {
   const router = useRouter();
   const mobileRef = useRef();
+  const otpRef = useRef();
   const [form, setForm] = useState({
     mobile: "",
     mobileErr: false,
     mobileErrText: "",
+    otp: "",
+    otpErr: false,
+    otpErrText: "",
   });
   const [snack, setSnack] = useState({
     open: false,
@@ -30,6 +36,7 @@ function Signup(props) {
     severity: "error",
     text: "",
   });
+  const [view, setView] = useState(false);
 
   const handleValidation = (el) => {
     const data = { mobile: el };
@@ -45,6 +52,20 @@ function Signup(props) {
       return false;
     }
 
+    return true;
+  };
+
+  const handleOTPValidation = (el) => {
+    const data = { otp: el };
+    const { valid, errors } = validation(data);
+    if (!valid) {
+      setForm({
+        ...form,
+        otpErr: true,
+        otpErrText: errors.otp,
+      });
+      return false;
+    }
     return true;
   };
 
@@ -78,7 +99,7 @@ function Signup(props) {
     return response.json();
   };
 
-  const handleSubscribe = async (e) => {
+  const handleOTP = async (e) => {
     e.preventDefault();
     let el = mobileRef.current;
 
@@ -92,23 +113,76 @@ function Signup(props) {
         text: form.mobileErrText || "Please enter mobile number",
       });
     } else {
-      postLogin()
-        .then((res) => {
-          if (res.code == "login/success") {
-            setSnack({
-              ...snack,
-              open: true,
-              severity: "success",
-              text: "Successfully Submitted",
-            });
+      // postLogin()
+      //   .then((res) => {
+      //     if (res.code == "login/success") {
+      //       setSnack({
+      //         ...snack,
+      //         open: true,
+      //         severity: "success",
+      //         text: "Successfully Submitted",
+      //       });
 
-            authCookie(true);
-            router.push("/dashboard");
-          }
+      //       authCookie(true);
+      //       router.push("/dashboard");
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+
+      const phoneNumber = `+91${form.mobile}`;
+      const appVerifier = window.recaptchaVerifier;
+      signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+        .then((confirmationResult) => {
+          window.confirmationResult = confirmationResult;
+          setView(true);
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((error) => {});
+
+      el.value = "";
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    let el = otpRef.current;
+    let isValid = true;
+
+    if (!el || el.value.length < 6) {
+      setForm({
+        ...form,
+        otpErr: true,
+        otpErrText: "Please enter correct OTP",
+      });
+      isValid = false;
+    }
+
+    if (!isValid) {
+      return setSnack({
+        ...snack,
+        open: true,
+        severity: "error",
+        text: form.otpErrText || "Please enter OTP",
+      });
+    } else {
+      const code = el.value;
+
+      confirmationResult
+        .confirm(code)
+        .then((result) => {
+          const user = result.user;
+          setSnack({
+            ...snack,
+            open: true,
+            severity: "success",
+            text: "Successfully Submitted",
+          });
+
+          authCookie(true);
+          router.push("/dashboard");
+        })
+        .catch((error) => {});
 
       el.value = "";
     }
@@ -121,12 +195,9 @@ function Signup(props) {
     setSnack({ ...snack, open: false });
   };
 
-  const { vertical, horizontal, open, severity, text } = snack;
-  const { mobile, mobileErr, mobileErrText } = form;
-
-  return (
-    <div className={s.form}>
-      <form action="" onSubmit={handleSubscribe} noValidate autoComplete="off">
+  const renderMobileScreen = () => {
+    return (
+      <form action="" noValidate autoComplete="off">
         <TextField
           onChange={handleChange}
           error={mobileErr}
@@ -149,11 +220,75 @@ function Signup(props) {
         />
 
         <div className={s.action}>
-          <Button type="submit" fullWidth variant="contained" size="large">
+          <Button
+            id="sign-in-button"
+            type="button"
+            fullWidth
+            variant="contained"
+            size="large"
+            onClick={handleOTP}
+          >
+            Send OTP
+          </Button>
+        </div>
+      </form>
+    );
+  };
+
+  const renderOTPScreen = () => {
+    return (
+      <form action="" noValidate autoComplete="off">
+        <TextField
+          onChange={handleChange}
+          error={otpErr}
+          helperText={otpErrText}
+          fullWidth
+          type="password"
+          name="otp"
+          label="Enter OTP"
+          inputRef={otpRef}
+          inputProps={{
+            maxLength: "6",
+            pattern: "d*",
+            autoComplete: "off",
+          }}
+        />
+
+        <div className={s.action}>
+          <Button
+            type="button"
+            fullWidth
+            variant="contained"
+            size="large"
+            onClick={handleLogin}
+          >
             {props.btnText}
           </Button>
         </div>
       </form>
+    );
+  };
+
+  useEffect(() => {
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      "sign-in-button",
+      {
+        size: "invisible",
+        callback: (response) => {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+          onSignInSubmit();
+        },
+      },
+      auth
+    );
+  }, []);
+
+  const { vertical, horizontal, open, severity, text } = snack;
+  const { mobile, mobileErr, mobileErrText, otp, otpErr, otpErrText } = form;
+
+  return (
+    <div className={s.form}>
+      {(!view && renderMobileScreen()) || renderOTPScreen()}
 
       <Snackbar
         open={open}

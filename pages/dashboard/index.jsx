@@ -130,7 +130,7 @@ function Dashboard() {
     }
   };
 
-  const getFiles = async () => {
+  const getInvoice = async () => {
     const res = await fetch(
       `/api/dashboard?` +
         new URLSearchParams({
@@ -179,7 +179,7 @@ function Dashboard() {
   };
 
   useEffect(() => {
-    getFiles();
+    getInvoice();
   }, []);
 
   const { vertical, horizontal, open, severity, text } = snack;

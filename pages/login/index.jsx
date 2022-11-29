@@ -21,7 +21,7 @@ export default function Signup() {
                     <h1>Login to Dashboard</h1>
                   </div>
 
-                  <SignupForm btnText="Next" />
+                  <SignupForm btnText="Log In" />
                 </div>
               </Grid>
             </Grid>
