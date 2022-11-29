@@ -31,8 +31,15 @@
   }
 
   .action {
+    margin-bottom: $gutter * 5;
+
     button {
       text-transform: capitalize;
     }
+  }
+
+  .list {
+    max-width: $sm;
+    text-transform: capitalize;
   }
 }

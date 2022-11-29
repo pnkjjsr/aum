@@ -9,6 +9,14 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemText from "@mui/material/ListItemText";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 
 import Layout from "@/layouts/account";
 
@@ -137,6 +145,39 @@ function Dashboard() {
     setList(data);
   };
 
+  const handleDeleteList = () => {
+    alert("Delete API needed.");
+  };
+
+  const renderList = () => {
+    return list.map((item, index) => {
+      return (
+        <List key={index}>
+          <ListItem
+            secondaryAction={
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={handleDeleteList}
+              >
+                <DeleteIcon />
+              </IconButton>
+            }
+          >
+            <ListItemAvatar>
+              <Avatar>
+                <InsertDriveFileIcon />
+              </Avatar>
+
+              {/* <Avatar alt={item.File_Type} src={item.Image} /> */}
+            </ListItemAvatar>
+            <ListItemText primary={item.File_Type} />
+          </ListItem>
+        </List>
+      );
+    });
+  };
+
   useEffect(() => {
     getFiles();
   }, []);
@@ -204,6 +245,8 @@ function Dashboard() {
               Submit
             </Button>
           </div>
+
+          <div className={s.list}>{renderList()}</div>
         </Container>
       </div>
 
